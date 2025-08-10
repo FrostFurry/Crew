@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rao RK Gaming</title>
+  <style>
+    /* === BASE RESET === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(ellipse at bottom, #0a0f1c 0%, #000000 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 50px 20px 30px;
+      text-align: center;
+      background: linear-gradient(90deg, #00ffe7, #00aaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 3.5em;
+      font-weight: bold;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    }
+
+    .subheading {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #aaa;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 40px 60px;
+    }
+
+    .card-button {
+      background: rgba(0, 255, 200, 0.1);
+      border: 2px solid #00ffd5;
+      border-radius: 20px;
+      padding: 25px 40px;
+      font-size: 1.3em;
+      color: #00ffe7;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 25px rgba(0,255,220,0.2);
+      min-width: 220px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-button:hover {
+      background: #00ffd5;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(0,255,255,0.5);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      padding: 40px 20px;
+    }
+
+    .modal-content {
+      background: #111;
+      border-left: 8px solid #00ffd5;
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 0 40px rgba(0,255,255,0.3);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-content h2 {
+      color: #00ffd5;
+      font-size: 2.2em;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    .close-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #00ffd5;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      background: #00aaff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Rao RK Gaming</header>
+  <div class="subheading">Meet the Legendary Crew</div>
+
+  <div class="container">
+    <div class="card-button" onclick="showModal('Shubham')">Shubham</div>
+    <div class="card-button" onclick="showModal('MJ')">MJ</div>
+    <div class="card-button" onclick="showModal('FrostFurry')">FrostFurry</div>
+    <div class="card-button" onclick="showModal('Demon')">Demon</div>
+    <div class="card-button" onclick="showModal('Seeker')">Seeker</div>
+    <div class="card-button" onclick="showModal('Melo')">Melo</div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle">Title</h2>
+      <p id="modalText">Details</p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <footer>
+    Rao RK Gaming • Built with Chaos & Code • © 2025
+  </footer>
+
+  <script>
+    const profiles = {
+      Shubham: {
+        title: "Shubham – The Ink Warrior",
+        text: `A calm presence until the first rage quits. Shubham dominates the Ink Game like an artist wielding destruction. Beware: Sudden outbursts may cause headphone damage. Friendly, loyal, but anger management is still in beta.`
+      },
+      MJ: {
+        title: "MJ – The Admin Overlord",
+        text: `Commands respect. Demands mangoes. MJ is both feared and simped for. Skilled in Blox Fruits PvP but known more for dangerous simping levels. May rage, but deep down — he cares (probably).`
+      },
+      FrostFurry: {
+        title: "FrostFurry – The Mysterious Furry",
+        text: `Known only by blurry Discord icons and sus one-liners, FrostFurry is a legend. Is he a cat? A fox? A meme? Unknown. Classified as "unloadable character file". Proceed with caution — and furry detectors.`
+      },
+      Demon: {
+        title: "Demon – The PvP Reaper",
+        text: `The Head Mod with god-tier instincts. PvP in Blox Fruits? You’ve already lost. Silent, strategic, and sharp as a katana. Rumors say Demon once banned a hacker with just a stare.`
+      },
+      Seeker: {
+        title: "Seeker – The Simpkey",
+        text: `Once known as Simpkey, now reborn as a wise Sr. Mod. Seeker has seen things. Balanced, fair, and just... until certain characters enter voice chat. A simp? Maybe. A legend? Absolutely.`
+      },
+      Melo: {
+        title: "Melo – The Soft-Trolling Nub",
+        text: `Sr. Staff with the vibe of a walking typo. Melo is unpredictable — part nub, part chaos generator. Speaks in unfinished sentences. Wields sarcasm like a blade. Possibly a ga-`
+      }
+    };
+
+    function showModal(key) {
+      const profile = profiles[key];
+      document.getElementById('modalTitle').innerText = profile.title;
+      document.getElementById('modalText').innerText = profile.text;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>
+
